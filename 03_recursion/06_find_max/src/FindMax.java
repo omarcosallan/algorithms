@@ -3,21 +3,14 @@ import java.util.List;
 
 public class FindMax {
     public static void main(String[] args) {
-        System.out.println(findMax(Arrays.asList(2, 3, 98, 150, 4, 6)));
+        System.out.println(max(new int[]{1, 5, 10, 25, 16, 1}));
     }
 
-    private static int findMax(List<Integer> list) {
-        if (list.isEmpty()) {
-            return 0;
+    private static int max(int[] arr) {
+        if (arr.length == 2) {
+            return arr[0] > arr[1] ? arr[0] : arr[1];
         }
-        if (list.size() == 1) {
-            return list.getFirst();
-        }
-        if (list.size() == 2) {
-            return list.get(0) > list.get(1) ? list.get(0) : list.get(1);
-        }
-
-        int subMax = findMax(list.subList(1, list.size()));
-        return list.get(0) > subMax ? list.get(0) : subMax;
+        int subMax = max(Arrays.copyOfRange(arr, 1, arr.length));
+        return arr[0] > subMax ? arr[0] : subMax;
     }
 }
