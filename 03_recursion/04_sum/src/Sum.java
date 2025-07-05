@@ -1,18 +1,14 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Sum {
     public static void main(String[] args) {
-        int total = sum(new ArrayList<>(Arrays.asList(2, 4, 6)), 0);
-        System.out.println(total);
+        System.out.println(sum(new int[]{1, 2, 3, 4}));
     }
 
-    private static int sum(ArrayList<Integer> list, int index) {
-        if (list.size() == index) {
+    private static int sum(int[] arr) {
+        if (arr.length == 0) {
             return 0;
         }
-
-        int num = list.get(index);
-        return num + sum(list, index + 1);
+        return arr[0] + sum(Arrays.copyOfRange(arr, 1, arr.length));
     }
 }
