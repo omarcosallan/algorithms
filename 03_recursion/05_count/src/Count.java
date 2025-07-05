@@ -1,15 +1,14 @@
 import java.util.Arrays;
-import java.util.List;
 
 public class Count {
     public static void main(String[] args) {
-        System.out.println(count(Arrays.asList(2, 4, 6)));
+        System.out.println(count(new int[]{0, 1, 2, 3, 4, 5}));
     }
 
-    private static int count(List<Integer> list) {
-        if (list.size() == 1) {
-            return 1;
+    private static int count(int[] arr) {
+        if (arr.length == 0) {
+            return 0;
         }
-        return 1 + count(list.subList(1, list.size()));
+        return 1 + count(Arrays.copyOfRange(arr, 1, arr.length));
     }
 }
